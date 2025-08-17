@@ -2,7 +2,7 @@ import os
 from pathlib import  Path
 
 files = [
-    "data/row/.gitkeep",
+    "data/raw/.gitkeep",
     'data/processed/.gitkeep',
     'notebook/.gitkeep',
     'reports/.gitkeep',
@@ -13,7 +13,6 @@ files = [
     'src/ml_introvert/pipeline/data/.gitkeep',
     'src/ml_introvert/pipeline/features/.gitkeep',
     'src/ml_introvert/pipeline/model/.gitkeep',
-    'logs/.gitkeep',
     'setup.py',
     'main.py',
     'params.yaml',

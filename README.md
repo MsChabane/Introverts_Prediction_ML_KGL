@@ -2,8 +2,64 @@
 
 > Predict whether a person is an **Introvert (0)** or **Extrovert (1)** using machine learning with a fully reproducible **DVC** pipeline.
 
-**Dataset (Kaggle Playground S5E7):**  
+## **Dataset (Kaggle Playground S5E7):**  
 https://www.kaggle.com/competitions/playground-series-s5e7
+
+
+
+### Quick Summary Table
+
+| Feature                     | Type         | Description                                          |
+|-----------------------------|--------------|------------------------------------------------------|
+| `id`                        | Integer      | Unique identifier for each record                    |
+| `Time_spent_Alone`          | Numerical    | Hours spent alone                                    |
+| `Stage_fear`                | Categorical  | Fear of performing on stage (Yes/No)                 |
+| `Social_event_attendance`   | Numerical    | Frequency of attending social events                 |
+| `Going_outside`             | Numerical    | Frequency of going outside                           |
+| `Drained_after_socializing` | Categorical  | Feeling drained post-socializing (Yes/No)            |
+| `Friends_circle_size`       | Numerical    | Size of social circle                                |
+| `Post_frequency`            | Numerical    | Social media post frequency                          |
+| `Personality`               | Categorical  | Target variable: Introvert or Extrovert              |
+
+### Features Description
+
+#### 1. `id`
+- **Type**: Integer  
+- **Description**: Unique identifier for each record.  
+
+#### 2. `Time_spent_Alone`
+- **Type**: Numerical  
+- **Description**: Number of hours a person spends alone.  
+
+#### 3. `Stage_fear`
+- **Type**: Categorical (Yes/No)  
+- **Description**: Indicates fear of performing on stage.  
+
+#### 4. `Social_event_attendance`
+- **Type**: Numerical  
+- **Description**: Frequency of attending social events.  
+
+#### 5. `Going_outside`
+- **Type**: Numerical  
+- **Description**: How often a person goes outside (per day/week).  
+
+#### 6. `Drained_after_socializing`
+- **Type**: Categorical (Yes/No)  
+- **Description**: Whether the person feels drained after socializing.  
+
+#### 7. `Friends_circle_size`
+- **Type**: Numerical  
+- **Description**: Size of the person’s friend group.  
+
+#### 8. `Post_frequency`
+- **Type**: Numerical  
+- **Description**: Frequency of posting on social media platforms.  
+
+#### 9. `Personality` (Target)
+- **Type**: Categorical  
+- **Description**: Target variable with two classes:  
+  - `Introvert`  
+  - `Extrovert`  
 
 ---
 
@@ -54,6 +110,9 @@ dvc repro
 dvc metrics show
 dvc exp show --no-pager
 ```
+
+
+
 
 ## 🎈 More
 + To run the server use the command : 
