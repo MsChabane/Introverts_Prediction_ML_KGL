@@ -1,0 +1,18 @@
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+matplotlib
+seaborn
+dvc
+pyyaml
+joblib
+uvicorn
+fastapi
+streamlit
+-e .
+
+
+
+
