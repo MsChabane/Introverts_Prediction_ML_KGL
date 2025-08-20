@@ -16,7 +16,9 @@ SCALER_FILENAME='scaler.pkl'
 MODEL_FILENAME='model.pkl'
 
 REPORTS_DIR=Path('reports')
-FEATURE_IMPORTANCE_FILENAME='Features Importance'
-
+FEATURE_IMPORTANCE_FILENAME='Features Importance.png'
+CONFUSION_MATRIX_FILENAME='cm.png'
+ROC_FILENAME='roc.png'
+METRICS_FILENAME='metrics.json'
 
 
