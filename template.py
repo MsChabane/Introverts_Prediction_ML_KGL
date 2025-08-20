@@ -3,6 +3,7 @@ from pathlib import  Path
 
 files = [
     "data/raw/.gitkeep",
+    "data/cleaned/.gitkeep",
     'data/processed/.gitkeep',
     'notebook/.gitkeep',
     'reports/.gitkeep',
