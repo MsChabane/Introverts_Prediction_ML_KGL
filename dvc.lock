@@ -1,0 +1,103 @@
+schema: '2.0'
+stages:
+  cleaning:
+    cmd: python -m ml_introvert.pipeline.data.data_cleaning
+    deps:
+    - path: data/raw/data.csv
+      hash: md5
+      md5: ee478d8efedb4cb1a14f084dc1033485
+      size: 759814
+    - path: src/ml_introvert/pipeline/data/data_cleaning.py
+      hash: md5
+      md5: ad8b18dc6e8be762df8d92494fa0be09
+      size: 559
+    outs:
+    - path: data/cleaned/cleaned_data.csv
+      hash: md5
+      md5: 4155279182771277d9821436ac3503f4
+      size: 684323
+  preprocessing:
+    cmd: python -m ml_introvert.pipeline.features.data_preprocessing
+    deps:
+    - path: data/cleaned/cleaned_data.csv
+      hash: md5
+      md5: 4155279182771277d9821436ac3503f4
+      size: 684323
+    - path: src/ml_introvert/pipeline/features/data_preprocessing.py
+      hash: md5
+      md5: 67c7a865338df0ef8fb7124981c8d369
+      size: 2097
+    params:
+      params.yaml:
+        preprocessing.random_state: 42
+        preprocessing.test_size: 0.3
+    outs:
+    - path: data/processed/test_data.csv
+      hash: md5
+      md5: d02666ebcf78020c11ee761ac0706f4f
+      size: 1449330
+    - path: data/processed/train_data.csv
+      hash: md5
+      md5: 6837117eb695fd215de15f2143174b31
+      size: 3381167
+    - path: models/encoder.pkl
+      hash: md5
+      md5: 2bde294ff90842ed787a3a89dd278ec6
+      size: 550
+    - path: models/scaler.pkl
+      hash: md5
+      md5: f524f2d5c77411aee3768c64f316b3bd
+      size: 1343
+  training:
+    cmd: python -m ml_introvert.pipeline.model.model_training
+    deps:
+    - path: data/processed/train_data.csv
+      hash: md5
+      md5: 6837117eb695fd215de15f2143174b31
+      size: 3381167
+    - path: src/ml_introvert/pipeline/model/model_training.py
+      hash: md5
+      md5: b98a3101ad28988852b0d1cf3461ec17
+      size: 1177
+    params:
+      params.yaml:
+        training.bootstrap: true
+        training.criterion: gini
+        training.estimators: 100
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 54babcc22d3345f463b62efde76c405f
+      size: 20676073
+    - path: reports/Features_Importance.png
+      hash: md5
+      md5: 3529909552254426eda728c19a907a68
+      size: 35178
+  evaluation:
+    cmd: python -m ml_introvert.pipeline.model.model_evaluation
+    deps:
+    - path: data/processed/test_data.csv
+      hash: md5
+      md5: d02666ebcf78020c11ee761ac0706f4f
+      size: 1449330
+    - path: models/model.pkl
+      hash: md5
+      md5: 54babcc22d3345f463b62efde76c405f
+      size: 20676073
+    - path: src/ml_introvert/pipeline/model/model_evaluation.py
+      hash: md5
+      md5: 3bb5065269146e993877be628ca74d37
+      size: 1885
+    outs:
+    - path: reports/cm.png
+      hash: md5
+      md5: 889a313f0030736f949414babb82f7d9
+      size: 16600
+    - path: reports/metrics.json
+      hash: md5
+      md5: 667192710001bff51916932d69f06443
+      size: 163
+    - path: reports/roc.png
+      hash: md5
+      md5: 68f348acff026a02d825414997f55cbc
+      size: 43824

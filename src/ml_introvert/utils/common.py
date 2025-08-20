@@ -1,6 +1,7 @@
 import pandas as pd 
 import os 
 import joblib
+import yaml
 
 def save_dataframe(df:pd.DataFrame,path:str):
     """
@@ -32,3 +33,13 @@ def save_bin(path_dir:str,filename:str,data:any):
     save binary object into pkl file
     """
     print(joblib.dump(data,os.path.join(path_dir,filename)))
+
+
+def read_params(key:str):
+    """
+    read the params file and return the params of the key (eg.:params['training'])
+    """
+    with open('params.yaml') as f :
+        params = yaml.safe_load(f)
+    return params[key]
+    

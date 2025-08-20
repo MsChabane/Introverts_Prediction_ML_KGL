@@ -7,12 +7,13 @@ import os
 
 
 if __name__ =='__main__':
+
     df = reading_data(path_dir=RAW_DATA_DIR,filename=DATA_FILENAME)
     if "id" in df.columns:
         df.drop(columns=['id'],inplace=True)
 
     df =fill_missnig_data(df)
-    print(df.isna().sum())
+    os.makedirs(CLEANED_DATA_DIR,exist_ok=True)
     save_dataframe(df=df,path=os.path.join(CLEANED_DATA_DIR,CLEANED_DATA_FILENAME))
 
 

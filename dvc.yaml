@@ -1,0 +1,54 @@
+stages:
+  cleaning:
+    cmd: python -m ml_introvert.pipeline.data.data_cleaning
+    deps :
+    - src/ml_introvert/pipeline/data/data_cleaning.py
+    - data/raw/data.csv
+    
+    outs:
+    - data/cleaned/cleaned_data.csv
+  
+  preprocessing: 
+    cmd : python -m ml_introvert.pipeline.features.data_preprocessing
+    deps : 
+    - src/ml_introvert/pipeline/features/data_preprocessing.py
+    - data/cleaned/cleaned_data.csv
+    params :
+     - preprocessing.test_size
+     - preprocessing.random_state
+    outs :
+    - models/encoder.pkl
+    - models/scaler.pkl
+    - data/processed/train_data.csv
+    - data/processed/test_data.csv
+
+  training :
+    cmd : python -m ml_introvert.pipeline.model.model_training
+    deps :
+    - src/ml_introvert/pipeline/model/model_training.py
+    - data/processed/train_data.csv
+
+    params :
+    - training.estimators
+    - training.criterion 
+    - training.bootstrap
+
+    outs :
+    - reports/Features_Importance.png
+    - models/model.pkl
+
+  evaluation :
+    cmd : python -m ml_introvert.pipeline.model.model_evaluation
+    deps :
+    - src/ml_introvert/pipeline/model/model_evaluation.py
+    - data/processed/test_data.csv
+    - models/model.pkl
+    metrics:
+      - reports/metrics.json
+    outs :
+    - reports/cm.png
+   
+    - reports/roc.png
+    
+    
+    
