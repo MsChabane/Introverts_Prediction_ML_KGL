@@ -12,7 +12,7 @@ def get_models():
     model = joblib.load(os.path.join(dir,'models','model.pkl'))
     encoder = joblib.load(os.path.join(dir,'models','encoder.pkl'))
     scaler = joblib.load(os.path.join(dir,'models','scaler.pkl'))
-    print('k')
+ 
     return model,encoder,scaler
 
 def predict(tsa,sae,go,fcs,pf,sf,das):
@@ -32,10 +32,10 @@ def predict(tsa,sae,go,fcs,pf,sf,das):
 st.title("Personality Prediction based on machine Learning algorithme")
 st.markdown("#### this is a demo application that predict Personality  based on caple of features by using machine learning algorithme")
 
-st.write("\n")
-st.write("\n")
+st.write("")
+st.write("")
 st.text("fill the boxes and submit to get the answer .")
-st.write("\n")
+st.write("")
 with st.form('form') :
 
     tsa = st.number_input("Hours spent alone : ",min_value=0,max_value=24,step=1)
