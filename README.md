@@ -118,10 +118,10 @@ dvc exp show --no-pager
 + To run the server use the command : 
 
 ```bash 
-python app.py 
+univorn app:app  
 ```
 + To run the streamlit app use the command : 
 ```bash
-streamlit run app.py 
+streamlit run main.py 
 ```
 

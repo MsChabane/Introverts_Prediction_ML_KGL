@@ -69,19 +69,16 @@ def predict(features:PredictionInput):
     proba=model.predict_proba(features)[0]
 
 
-    return encoder.inverse_transform(pred)[0],proba[pred[0]]*100
+    return encoder.inverse_transform(pred)[0],proba[pred[0]]
 
-
-
-
-
+    
 
 @app.post("/predict",response_model=PredictionOutput)
 def predict_route(input_data: PredictionInput):
     
     try :
         result=predict(input_data)
-        a=0/0
+     
         output=Output(prediction=result[0],probability=result[1])   
         return JSONResponse(content=PredictionOutput(response=output).dict(),status_code=200)
 

@@ -23,6 +23,8 @@ files = [
     '.gitignore',
     'template.py',
     'requirements.txt',
+    "Dockerfile",
+    '.dockerignore'
 ]
 
 for file in files:
